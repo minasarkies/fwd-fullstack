@@ -14,7 +14,7 @@ resizeR.get(
     const newHeight: number = parseInt(req.params.height) || 1280;
     
 
-    if (!(fs.existsSync(`./src/images/${imgName}.jpg`))) {  // just to check if the file exists
+    if ((fs.existsSync(`./src/images/${imgName}.jpg`))) {  // just to check if the file exists
       console.log(`no image with name: '${imgName}' was found`);
       res
         .status(404)
