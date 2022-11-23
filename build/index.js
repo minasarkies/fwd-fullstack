@@ -49,14 +49,16 @@ app.get('/', function (req, res) {
 app.use('/', resize_1.default); // Next the routes are created to created a structured and organized app.
 // the paths we will use are: /home, /exists, /upload.
 app.use('/exists', exists_1.default);
-app.use('/upload', upload_1.default);
-// Simple ways to ensure nonvalid url errors are handled.
+app.use('/uploads', upload_1.default);
+// app.get('/upload', (req: express.Request, res: express.Response): void => {
+//   res.status(404).send('Please include a valid filename in the URL');
+// });                                                  // Simple ways to ensure nonvalid url errors are handled.
 app.get('/resize', function (req, res) {
     res.status(404).send('Please include a valid filename in the URL');
 });
-// app.get('/*', (req: express.Request, res: express.Response): void => {
-//   res.status(404).send('404 ERROR');
-// });
+app.get('/*', function (req, res) {
+    res.status(404).send('404 ERROR');
+});
 app.listen(port, function () {
     "Server started on localhost:".concat(port);
     console.log("The server has started -> http://localhost:3000/");

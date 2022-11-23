@@ -14,7 +14,7 @@ resizeR.get(
     const newHeight: number = parseInt(req.params.height) || 1280;
 
 
-    if ((fs.existsSync(`./src/full/${imgName}.jpg`))) {  // just to check if the file exists
+    if ((!fs.existsSync(`./src/images/full/${imgName}.jpg`))) {  // just to check if the file exists
       console.log(`no image with name: '${imgName}' was found`);
       res
         .status(404)
@@ -27,10 +27,10 @@ resizeR.get(
           //await resizeImg(imgName, newWidth, newHeight);
           const img = await jimp.read(`./src/images/full/${imgName}.jpg`);     // First we retrieve the image
           img.resize(newWidth, newHeight);                         // Next we resize the image based on the recieved dimentions
-          await img.writeAsync(`images_out/${imgName}_${newWidth}_${newHeight}.png`);      // Finally the file is saved to an image_out dir
+          await img.writeAsync(`./images_out/${imgName}_${newWidth}_${newHeight}.png`);      // Finally the file is saved to an image_out dir
 
           res.sendFile(`${imgName}_${newWidth}_${newHeight}.png`, {                 // Finally the image is displayed and saved.
-          root: path.join(__dirname, "../../images_out"),
+          root: path.join(__dirname, "./images_out"),
       });
     } else {                                                // If all other conditions have not been met then the image must have been processed previously and hence must be saved.
           console.log("This image with this size already existed");

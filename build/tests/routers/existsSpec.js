@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest")); // We import supertest to test if the endpoint is working correctly
-var express_1 = __importDefault(require("express")); // We are simply creating a sort of dummy server in order to test the app 
+var express_1 = __importDefault(require("express")); // We are simply creating a sort of dummy server in order to test the app
 var exists_1 = __importDefault(require("../../routers/exists")); //Importing router1 here from the exists.ts file
 var app = (0, express_1.default)();
 app.use('/resizeavailable', exists_1.default);

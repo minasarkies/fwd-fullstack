@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var fs_1 = require("fs");
 var uploadR = express_1.default.Router();
-uploadR.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+uploadR.post("/uploads", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tempFile, tempPath, img;
     return __generator(this, function (_a) {
         switch (_a.label) {

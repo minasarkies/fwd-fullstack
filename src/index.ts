@@ -26,15 +26,18 @@ app.use('/', resizeR);                             // Next the routes are create
                                                   // the paths we will use are: /home, /exists, /upload.
 app.use('/exists', router1);
 
-app.use('/upload', uploadR);
-                                                  // Simple ways to ensure nonvalid url errors are handled.
+app.use('/uploads', uploadR);
+
+// app.get('/upload', (req: express.Request, res: express.Response): void => {
+//   res.status(404).send('Please include a valid filename in the URL');
+// });                                                  // Simple ways to ensure nonvalid url errors are handled.
 app.get('/resize', (req: express.Request, res: express.Response): void => {
   res.status(404).send('Please include a valid filename in the URL');
 });
 
-// app.get('/*', (req: express.Request, res: express.Response): void => {
-//   res.status(404).send('404 ERROR');
-// });
+app.get('/*', (req: express.Request, res: express.Response): void => {
+  res.status(404).send('404 ERROR');
+});
 
 app.listen(port, (): void => {                    // Finally we establish our server on the assigned port number on http://localhost:{port}
   `Server started on localhost:${port}`;

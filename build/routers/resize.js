@@ -53,7 +53,7 @@ function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
                 imgName = req.params.imgname;
                 newWidth = parseInt(req.params.width) || 720;
                 newHeight = parseInt(req.params.height) || 1280;
-                if (!(fs_1.default.existsSync("./src/full/".concat(imgName, ".jpg")))) return [3 /*break*/, 1];
+                if (!(!fs_1.default.existsSync("./src/images/full/".concat(imgName, ".jpg")))) return [3 /*break*/, 1];
                 console.log("no image with name: '".concat(imgName, "' was found"));
                 res
                     .status(404)
@@ -66,11 +66,11 @@ function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
             case 2:
                 img = _a.sent();
                 img.resize(newWidth, newHeight); // Next we resize the image based on the recieved dimentions
-                return [4 /*yield*/, img.writeAsync("images_out/".concat(imgName, "_").concat(newWidth, "_").concat(newHeight, ".png"))];
+                return [4 /*yield*/, img.writeAsync("./images_out/".concat(imgName, "_").concat(newWidth, "_").concat(newHeight, ".png"))];
             case 3:
                 _a.sent(); // Finally the file is saved to an image_out dir
                 res.sendFile("".concat(imgName, "_").concat(newWidth, "_").concat(newHeight, ".png"), {
-                    root: path_1.default.join(__dirname, "../../images_out"),
+                    root: path_1.default.join(__dirname, "./images_out"),
                 });
                 return [3 /*break*/, 5];
             case 4:
