@@ -18,19 +18,31 @@ app.use(fileUpload({
   tempFileDir: './temp'
 }))
 
-app.get('/', (req: express.Request, res: express.Response): void => {
-  res.send(('Home Page -> Please add the following to the url: /resize or /exists or /upload <br> If no dimensions are specified then the default till be 1024 * 1024'));
-});
+// app.get('/', (req: express.Request, res: express.Response): void => {
+//   res.send(('Home Page -> Please add the following to the url: /resize or /exists or /upload <br> If no dimensions are specified then the default till be 1024 * 1024'));
+// });
 
 app.use('/', resizeR);                             // Next the routes are created to created a structured and organized app.
-                                                  // the paths we will use are: /home, /exists, /upload.
+                                                   // the paths we will use are: /home, /exists, /upload.
 app.use('/exists', router1);
 
-app.use('/uploads', uploadR);
+app.use('/upload', uploadR);
 
-// app.get('/upload', (req: express.Request, res: express.Response): void => {
-//   res.status(404).send('Please include a valid filename in the URL');
-// });                                                  // Simple ways to ensure nonvalid url errors are handled.
+app.get('/', (req: express.Request, res: express.Response): void => {
+  res.send(
+      '<h1>Hello! This is an image processing api.</h1>' +
+      '<h2>Available Filenames: [encenadaport, fjord, icelandwaterfall, palmtunnel, santamonica]</h2>' +
+      '<h3>Example: http://localhost:3000/resize/santamonica </h3>' +
+      '<h3>Alternatively: http://localhost:3000/resize/santamonica/100/50</h3>'
+  );
+});
+
+ // app.get('/upload', (req: express.Request, res: express.Response): void => {
+ //   app.use('/new', uploadR);
+ //   console.log('reached here');
+   //res.status(404).send('Please include a valid filename in the URL');
+// });
+                        // Simple ways to ensure nonvalid url errors are handled.
 app.get('/resize', (req: express.Request, res: express.Response): void => {
   res.status(404).send('Please include a valid filename in the URL');
 });
