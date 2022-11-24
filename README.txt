@@ -8,3 +8,6 @@ Endpoints:
 '/resize/:{ImageNameWithoutExtension}/:{RequiredWidth}?/:{RequiredHeight}?'  -> to preform resize operation
 '/upload' -> To upload an image to the directory
 '/exists' -> to check if an image already has been resized and hence already exists
+
+Output:
+Will be found in this images_out directory
