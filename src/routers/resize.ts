@@ -25,7 +25,7 @@ resizeR.get(
         {
           console.log('Now resizing...');
           //await resizeImg(imgName, newWidth, newHeight);
-          const img = await jimp.read(`./src/images/full/${imgName}.jpg`);     // First we retrieve the image
+          const img = await jimp.read(`./images/full/${imgName}.jpg`);     // First we retrieve the image
           img.resize(newWidth, newHeight);                         // Next we resize the image based on the recieved dimentions
           await img.writeAsync(`images_out/${imgName}_${newWidth}_${newHeight}.png`);      // Finally the file is saved to an image_out dir
           res.sendFile(`${imgName}_${newWidth}_${newHeight}.png`, {                 // Finally the image is displayed and saved.
